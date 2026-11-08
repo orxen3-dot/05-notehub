@@ -1,78 +1,94 @@
-# React + TypeScript + Vite
+# NoteHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A note management application built with React, TypeScript, and TanStack Query. NoteHub allows users to create, delete, search, and organize notes with pagination.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Create notes** with a title, content, and category.
+- **Delete notes** directly from the notes list.
+- **Search notes** with debounced input to reduce unnecessary API requests.
+- **Pagination** for browsing through notes.
+- **Form validation** using Formik and Yup.
+- **Server state management** with TanStack Query.
+- **Responsive interface** styled with CSS Modules.
 
-## React Compiler
+## Technologies
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- React
+- TypeScript
+- Vite
+- TanStack Query
+- Axios
+- Formik
+- Yup
+- React Paginate
+- use-debounce
+- CSS Modules
+- modern-normalize
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the repository
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/orxen3-dot/05-notehub.git
+cd 05-notehub
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory and add your API token:
+
+```env
+VITE_NOTEHUB_TOKEN=your_api_token
+```
+
+You can obtain an API token from the [NoteHub API documentation](https://notehub-public.goit.study/api/docs).
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+## API
+
+The application uses the NoteHub REST API:
+
+https://notehub-public.goit.study/api
+
+All requests are handled through Axios, while TanStack Query manages server state, caching, mutations, and data synchronization.
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── App/
+│   ├── Modal/
+│   ├── NoteForm/
+│   ├── NoteList/
+│   ├── Pagination/
+│   └── SearchBox/
+├── services/
+│   └── noteService.ts
+├── types/
+│   └── note.ts
+├── App.tsx
+├── index.css
+└── main.tsx
+```
+
+## Live Demo
+
+Add your deployed Vercel URL here.
+
+## Author
+
+[GitHub Profile](https://github.com/orxen3-dot)

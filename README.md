@@ -1,69 +1,64 @@
 # NoteHub
 
-A note management application built with React, TypeScript, and TanStack Query. NoteHub allows users to create, delete, search, and organize notes with pagination.
+A note-management application built with React, TypeScript, TanStack Query, and the NoteHub REST API.
 
 ## Features
 
-- **Create notes** with a title, content, and category.
-- **Delete notes** directly from the notes list.
-- **Search notes** with debounced input to reduce unnecessary API requests.
-- **Pagination** for browsing through notes.
-- **Form validation** using Formik and Yup.
-- **Server state management** with TanStack Query.
-- **Responsive interface** styled with CSS Modules.
+- Create notes with a title, content, and tag
+- Delete notes
+- Search notes with a debounced input
+- Browse notes with pagination
+- Validate note forms with Formik and Yup
+- Cache and synchronize server data with TanStack Query
+- Display loading, error, and empty states
 
-## Technologies
+## Tech Stack
 
-- React
-- TypeScript
+- React 19 and TypeScript
 - Vite
 - TanStack Query
 - Axios
-- Formik
-- Yup
+- Formik and Yup
 - React Paginate
 - use-debounce
 - CSS Modules
-- modern-normalize
+- Modern Normalize
 
 ## Getting Started
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/orxen3-dot/05-notehub.git
-cd 05-notehub
-```
-
-### 2. Install dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 2. Configure the API token
 
-Create a `.env` file in the root directory and add your API token:
+Create a `.env.local` file in the project root:
 
 ```env
 VITE_NOTEHUB_TOKEN=your_api_token
 ```
 
-You can obtain an API token from the [NoteHub API documentation](https://notehub-public.goit.study/api/docs).
+The token can be obtained from the [NoteHub API documentation](https://notehub-public.goit.study/api/docs).
 
-### 4. Start the development server
+### 3. Start the development server
 
 ```bash
 npm run dev
 ```
 
+### Available scripts
+
+- `npm run build` - type-check and build the application
+- `npm run lint` - run ESLint
+- `npm run preview` - preview the production build
+
 ## API
 
-The application uses the NoteHub REST API:
+The application communicates with the [NoteHub REST API](https://notehub-public.goit.study/api). Axios handles HTTP requests, while TanStack Query manages fetching, caching, and server-state updates.
 
-https://notehub-public.goit.study/api
-
-All requests are handled through Axios, while TanStack Query manages server state, caching, mutations, and data synchronization.
+**Security note:** Vite variables prefixed with `VITE_` are included in client-side code. Use only credentials intended for browser-side use and never commit your local environment file.
 
 ## Project Structure
 
@@ -80,15 +75,10 @@ src/
 │   └── noteService.ts
 ├── types/
 │   └── note.ts
-├── App.tsx
 ├── index.css
 └── main.tsx
 ```
 
-## Live Demo
+## Learning Focus
 
-Add your deployed Vercel URL here.
-
-## Author
-
-[GitHub Profile](https://github.com/orxen3-dot)
+Server-state management, API integration, typed React components, debounced search, pagination, form validation, and CRUD operations.
